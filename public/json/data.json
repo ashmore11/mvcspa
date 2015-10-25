@@ -1,0 +1,43 @@
+{
+	"partials": {
+		"HEADER": {
+			"title": "Header",
+			"copy": {
+				"description": "Header..."
+			}
+		},
+		"FOOTER": {
+			"title": "Footer",
+			"copy": {
+				"description": "Footer..."
+			}
+		}
+	},
+	"pages": {
+		"HOME": {
+			"meta": {
+				"title": "Angular Boilerplate - Home Page",
+				"ogTitle": "Angular Boilerplate - Home Page"
+			},
+			"title": "Home page",
+			"copy": {
+				"description": "Home page..."
+			},
+			"assets": [
+				{ "type": "image", "src": "images/placeholder.png" },
+				{ "type": "image", "src": "images/placeholder.png" },
+				{ "type": "image", "src": "images/placeholder.png" }
+			]
+		},
+		"EXAMPLE": {
+			"meta": {
+				"title": "Angular Boilerplate - Example Page",
+				"ogTitle": "Angular Boilerplate - Example Page"
+			},
+			"title": "Example page",
+			"copy": {
+				"description": "Example page..."
+			}
+		}
+	}
+}

@@ -1,4 +1,9 @@
 #header
+
+  h2 #{data.title}
+
   ul
-    each item in locals
+
+    each item in routes
+      
       li: a(href="#{item.path}") #{item.id}

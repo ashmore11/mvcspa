@@ -1,10 +1,12 @@
 class HomeView {
 
-	constructor() {
+  constructor() {
 
-		console.log('--[ VIEW: HOME ]--');
+    this.el = $('#home');
 
-	}
+    console.log('--[ VIEW: HOME ]--', this.el);
+
+  }
 
 }
 

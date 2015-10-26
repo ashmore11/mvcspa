@@ -1,18 +1,19 @@
-import Happens from 'happens'
+import Happens from 'happens';
+import Config  from 'app/config';
 
-class AppModel {
+class Model {
 
   constructor() {
 
     Happens(this);
 
-    let url = 'json/data.json';
+    let url = `json/${Config.language}/data.json`;
 
     let promise = fetch(url).then(response => {
     
       return response.json();
 
-     });
+    });
 
     promise.then(data => {
 
@@ -24,4 +25,4 @@ class AppModel {
 
 }
 
-export default new AppModel();
+export default new Model();

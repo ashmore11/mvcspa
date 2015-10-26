@@ -1,6 +1,6 @@
-import Model      from 'app/model';
-import Controller from 'app/controller';
 import jquery     from 'jquery';
+import Config     from 'app/config';
+import Controller from 'app/controller';
 
 class App {
 
@@ -9,19 +9,7 @@ class App {
     window.$ = jquery
 
     this.controller = new Controller();
-    this.controller.bindEvents();
-
-    this.bindEvents();
-
-  }
-
-  bindEvents() {
-
-    Model.on('data:loaded', data => {
-    
-      this.controller.init(data);
-
-    });
+    this.config     = Config;
 
   }
 

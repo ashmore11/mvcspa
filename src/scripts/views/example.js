@@ -1,10 +1,12 @@
 class ExampleView {
 
-	constructor() {
+  constructor() {
 
-		console.log('--[ VIEW: EXAMPLE ]--');
+    this.el = $('#example');
 
-	}
+    console.log('--[ VIEW: EXAMPLE ]--', this.el);
+
+  }
 
 }
 

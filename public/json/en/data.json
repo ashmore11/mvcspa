@@ -1,23 +1,40 @@
 {
+
+	"routes": [
+		{
+      "id": "home",
+      "path": "/"
+    },
+    {
+      "id": "example",
+      "path": "/example"
+    }
+	],
+
 	"partials": {
+		
 		"header": {
 			"title": "Header",
 			"copy": {
 				"description": "Header..."
 			}
 		},
+
 		"footer": {
 			"title": "Footer",
 			"copy": {
 				"description": "Footer..."
 			}
 		}
+
 	},
+
 	"pages": {
+
 		"home": {
 			"meta": {
-				"title": "Angular Boilerplate - Home Page",
-				"ogTitle": "Angular Boilerplate - Home Page"
+				"title": "Home Page",
+				"ogTitle": "Home Page"
 			},
 			"title": "Home page",
 			"copy": {
@@ -29,15 +46,18 @@
 				{ "type": "image", "src": "images/placeholder.png" }
 			]
 		},
+
 		"example": {
 			"meta": {
-				"title": "Angular Boilerplate - Example Page",
-				"ogTitle": "Angular Boilerplate - Example Page"
+				"title": "Example Page",
+				"ogTitle": "Example Page"
 			},
 			"title": "Example page",
 			"copy": {
 				"description": "Example page..."
 			}
 		}
+		
 	}
+
 }

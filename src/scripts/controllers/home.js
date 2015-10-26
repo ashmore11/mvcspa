@@ -1,4 +1,5 @@
-import Model from 'models/home';
+import Model  from 'models/home';
+import Router from 'app/router';
 
 class HomeController {
 
@@ -8,13 +9,15 @@ class HomeController {
 
 			this.setData(data);
 
-		})
+		});
+
+		console.log(Router.path);
 
 	}
 
 	setData(data) {
 
-		console.log(data.pages['HOME']);
+		// console.log(data.pages['HOME']);
 
 	}
 

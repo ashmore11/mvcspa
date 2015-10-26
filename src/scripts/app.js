@@ -4,9 +4,8 @@ class App {
 
 	constructor() {
 
-		const view = new Home();
-
-		// console.log('APP', view);
+		this.views = {};
+		this.views.home = new Home();
 
 	}
 

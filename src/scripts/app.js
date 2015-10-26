@@ -1,13 +1,29 @@
-import Home from 'views/home';
+import Model      from 'app/model';
+import Controller from 'app/controller';
+import jquery     from 'jquery';
 
 class App {
 
 	constructor() {
 
-		this.views = {};
-		this.views.home = new Home();
+    window.$ = jquery
 
-	}
+    this.controller = new Controller();
+    this.controller.bindEvents();
+
+    this.bindEvents();
+
+  }
+
+  bindEvents() {
+
+    Model.on('data:loaded', data => {
+    
+      this.controller.init(data);
+
+    });
+
+  }
 
 }
 

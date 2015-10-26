@@ -1,12 +1,12 @@
 {
 	"partials": {
-		"HEADER": {
+		"header": {
 			"title": "Header",
 			"copy": {
 				"description": "Header..."
 			}
 		},
-		"FOOTER": {
+		"footer": {
 			"title": "Footer",
 			"copy": {
 				"description": "Footer..."
@@ -14,7 +14,7 @@
 		}
 	},
 	"pages": {
-		"HOME": {
+		"home": {
 			"meta": {
 				"title": "Angular Boilerplate - Home Page",
 				"ogTitle": "Angular Boilerplate - Home Page"
@@ -29,7 +29,7 @@
 				{ "type": "image", "src": "images/placeholder.png" }
 			]
 		},
-		"EXAMPLE": {
+		"example": {
 			"meta": {
 				"title": "Angular Boilerplate - Example Page",
 				"ogTitle": "Angular Boilerplate - Example Page"

@@ -1,20 +1,54 @@
-import Page from 'page'
+import Happens from 'happens'
+import Page    from 'page'
 
 class Router {
 
 	constructor() {
 
-		Page('*', (ctx) => {
+    Happens(this);
 
-			// console.log(ctx);
+    this.setRoutes();
 
-			this.path = ctx.path
+    Page('*', this.start.bind(this));
 
-		});
+    Page();
 
-		Page();
+  }
+
+  start(ctx) {
+
+    // Stop routing if current page if the same as link clicked
+    if (this.path === ctx.path) { return; }
+
+    this.routes.map(route => {
+
+      if (route.path === ctx.path) {
+
+        this.pageId = route.id;
+        this.path   = route.path;
+
+      }
+
+    });
+
+    this.emit('url:changed');
 
 	}
+
+  setRoutes() {
+    
+    this.routes = [
+      {
+        id: 'home',
+        path: '/',
+      },
+      {
+        id: 'example',
+        path: '/example'
+      }
+    ];
+
+  }
 
 }
 

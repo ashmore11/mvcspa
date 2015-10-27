@@ -1,14 +1,8 @@
 {
 
 	"routes": [
-		{
-      "id": "home",
-      "path": "/"
-    },
-    {
-      "id": "example",
-      "path": "/example"
-    }
+		{ "id": "home",    "path": "/" },
+    { "id": "example", "path": "/example" }
 	],
 
 	"partials": {

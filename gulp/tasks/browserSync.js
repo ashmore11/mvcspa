@@ -12,9 +12,11 @@ gulp.task('browserSync', () => {
     notify: true,
     reloadDelay: 500,
     server: {
-      baseDir: './public',
+      baseDir: `${process.env.PWD}/public`,
       middleware: [
-        modRewrite(['^[^\\.]*$ /index.html [L]'])
+        modRewrite([
+          '^([^.]+)$ /index.html [L]'
+        ])
       ]
     }
   

@@ -1,57 +1,58 @@
 {
 
-	"routes": [
-		{ "id": "home",    "path": "/" },
-    { "id": "example", "path": "/example" }
-	],
+  "partials": {
+    
+    "header": {
+      "title": "Header",
+      "description": "This is a header..."
+    },
 
-	"partials": {
-		
-		"header": {
-			"title": "Header",
-			"copy": {
-				"description": "Header..."
-			}
-		},
+    "footer": {
+      "title": "Footer",
+      "description": "This is a footer..."
+    }
 
-		"footer": {
-			"title": "Footer",
-			"copy": {
-				"description": "Footer..."
-			}
-		}
+  },
 
-	},
+  "pages": {
 
-	"pages": {
+    "home": {
+      "meta": {
+        "title": "Home Page"
+      },
+      "title": "Home page",
+      "description": "Home page...",
+      "assets": [
+        { "type": "image", "src": "images/placeholder.png" },
+        { "type": "image", "src": "images/placeholder.png" },
+        { "type": "image", "src": "images/placeholder.png" }
+      ]
+    },
 
-		"home": {
-			"meta": {
-				"title": "Home Page",
-				"ogTitle": "Home Page"
-			},
-			"title": "Home page",
-			"copy": {
-				"description": "Home page..."
-			},
-			"assets": [
-				{ "type": "image", "src": "images/placeholder.png" },
-				{ "type": "image", "src": "images/placeholder.png" },
-				{ "type": "image", "src": "images/placeholder.png" }
-			]
-		},
+    "example": {
+      "meta": {
+        "title": "Example Page"
+      },
+      "title": "Example page",
+      "description": "Example page..."
+    }
+    
+  },
 
-		"example": {
-			"meta": {
-				"title": "Example Page",
-				"ogTitle": "Example Page"
-			},
-			"title": "Example page",
-			"copy": {
-				"description": "Example page..."
-			}
-		}
-		
-	}
+  "users": {
+
+    "tom-jones": {
+      "name": "Tom Jones",
+      "title": "Mr",
+      "age": "30"
+    },
+
+    "john-smith": {
+      "name": "John Smith",
+      "title": "Mr",
+      "age": "42"
+    }
+
+  }
 
 }

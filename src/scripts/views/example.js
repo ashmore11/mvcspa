@@ -4,7 +4,7 @@ class ExampleView {
 
     this.el = $('#example');
 
-    console.log('--[ VIEW: EXAMPLE ]--', this.el);
+    console.log('--[ VIEW: EXAMPLE ]--');
 
   }
 

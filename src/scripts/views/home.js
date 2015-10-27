@@ -4,7 +4,7 @@ class HomeView {
 
     this.el = $('#home');
 
-    console.log('--[ VIEW: HOME ]--', this.el);
+    console.log('--[ VIEW: HOME ]--');
 
   }
 

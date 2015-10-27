@@ -1,6 +1,7 @@
-import Happens from 'happens'
-import Page    from 'page'
-import Model   from 'app/model'
+import Happens from 'happens';
+import Page    from 'page';
+import Config  from 'app/config';
+import Model   from 'app/model';
 
 class Router {
 
@@ -20,42 +21,40 @@ class Router {
 
   init(data) {
 
-    this.routes = data.routes;
+    this.data = data;
 
-    Page('*', ctx => {
-
-      this.start(ctx, data);
-
-    });
-
+    Page('/', this.navigate.bind(this));
+    Page('/example', this.navigate.bind(this));
+    Page('/example/:id', this.navigate.bind(this));
+    Page('*', this.notFound.bind(this));
     Page();
 
     this.emit('data:ready');
 
   }
 
-  start(ctx, data) {
+  navigate(ctx) {
 
-    if (this.path === ctx.path) { return; }
+    let id = ctx.path.split('/')[1];
 
-    this.routes.map(route => {
+    if (id.length === 0) { id = 'home'; }
 
-      if (route.path === ctx.path) {
-
-        this.pageId = route.id;
-        this.path   = route.path;
-        
-        this.data = {
-          page  : data.pages[route.id],
-          header: data.partials.header,
-          footer: data.partials.footer,
-        };
-
-      }
-
-    });
+    this.pageId = id;
+    this.userId = ctx.params.id ? ctx.params.id : null;
 
     this.emit('url:changed');
+
+  }
+
+  go(url) {
+
+    Page(url);
+
+  }
+
+  notFound(ctx) {
+
+    console.warn('404 page not found for:', ctx.path);
 
   }
 

@@ -10,6 +10,7 @@ gulp.task('browserSync', () => {
 
     open: false,
     notify: true,
+    reloadDelay: 500,
     server: {
       baseDir: './public',
       middleware: [

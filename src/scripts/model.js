@@ -1,7 +1,7 @@
 import Happens from 'happens';
 import Config  from 'app/config';
 
-class Model {
+class AppModel {
 
   constructor() {
 
@@ -25,4 +25,4 @@ class Model {
 
 }
 
-export default new Model();
+export default new AppModel();

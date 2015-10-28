@@ -23,31 +23,35 @@ class AppRouter {
 
     this.data = data;
 
-    Page('/',             this.navigate.bind(this));
-    Page('/example/:id?', this.navigate.bind(this));
-    Page('*',             this.notFound.bind(this));
+    this.routes = [
+      {id: 'home',     path: '/'},
+      {id: 'example',  path: '/example/:id?'}
+    ];
+
+    this.routes.map((route) => {
+      
+      Page(route.path, (ctx) => {
+
+        this.navigate(ctx, route);
+
+      });
+
+    });
+
+    Page('*', this.notFound.bind(this));
+
     Page();
 
     this.emit('router:ready');
 
   }
 
-  navigate(ctx) {
+  navigate(ctx, route) {
 
-    let id = ctx.path.split('/')[1];
-
-    if(id.length === 0) { id = 'home'; }
-
-    this.pageId = id;
+    this.pageId = route.id
     this.userId = ctx.params.id ? ctx.params.id : void 0;
 
     this.emit('url:changed');
-
-  }
-
-  go(url) {
-
-    Page(url);
 
   }
 

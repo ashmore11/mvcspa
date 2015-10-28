@@ -9448,36 +9448,34 @@
 	  }, {
 	    key: 'init',
 	    value: function init(data) {
+	      var _this = this;
 
 	      this.data = data;
 
-	      (0, _page2['default'])('/', this.navigate.bind(this));
-	      (0, _page2['default'])('/example/:id?', this.navigate.bind(this));
+	      this.routes = [{ id: 'home', path: '/' }, { id: 'example', path: '/example/:id?' }];
+
+	      this.routes.map(function (route) {
+
+	        (0, _page2['default'])(route.path, function (ctx) {
+
+	          _this.navigate(ctx, route);
+	        });
+	      });
+
 	      (0, _page2['default'])('*', this.notFound.bind(this));
+
 	      (0, _page2['default'])();
 
 	      this.emit('router:ready');
 	    }
 	  }, {
 	    key: 'navigate',
-	    value: function navigate(ctx) {
+	    value: function navigate(ctx, route) {
 
-	      var id = ctx.path.split('/')[1];
-
-	      if (id.length === 0) {
-	        id = 'home';
-	      }
-
-	      this.pageId = id;
+	      this.pageId = route.id;
 	      this.userId = ctx.params.id ? ctx.params.id : void 0;
 
 	      this.emit('url:changed');
-	    }
-	  }, {
-	    key: 'go',
-	    value: function go(url) {
-
-	      (0, _page2['default'])(url);
 	    }
 	  }, {
 	    key: 'notFound',

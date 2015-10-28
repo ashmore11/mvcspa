@@ -17,9 +17,6 @@
   "pages": {
 
     "home": {
-      "meta": {
-        "title": "Home Page"
-      },
       "title": "Home page",
       "description": "Home page...",
       "assets": [
@@ -30,9 +27,6 @@
     },
 
     "example": {
-      "meta": {
-        "title": "Example Page"
-      },
       "title": "Example page",
       "description": "Example page..."
     }

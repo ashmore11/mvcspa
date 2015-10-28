@@ -109,6 +109,10 @@
 
 	var _appRouter2 = _interopRequireDefault(_appRouter);
 
+	var _appModel = __webpack_require__(11);
+
+	var _appModel2 = _interopRequireDefault(_appModel);
+
 	var _templatesCommonHeaderJade = __webpack_require__(12);
 
 	var _templatesCommonHeaderJade2 = _interopRequireDefault(_templatesCommonHeaderJade);
@@ -121,31 +125,30 @@
 	  function AppController() {
 	    _classCallCheck(this, AppController);
 
-	    this.bindEvents();
+	    _appModel2['default'].on('data:loaded', this.init.bind(this));
 	  }
 
 	  _createClass(AppController, [{
-	    key: 'bindEvents',
-	    value: function bindEvents() {
-
-	      _appRouter2['default'].once('router:ready', this.init.bind(this));
-	      _appRouter2['default'].on('url:changed', this.render.bind(this));
-	    }
-	  }, {
 	    key: 'init',
-	    value: function init() {
+	    value: function init(data) {
+
+	      this.data = data;
 
 	      this.renderCommonElements();
+
+	      _appRouter2['default'].on('url:changed', this.render.bind(this));
+
+	      _appRouter2['default'].init();
 	    }
 	  }, {
 	    key: 'render',
-	    value: function render() {
+	    value: function render(pageId, userId) {
 
-	      var view = __webpack_require__(16)("./" + _appRouter2['default'].pageId);
-	      var template = __webpack_require__(19)("./" + _appRouter2['default'].pageId + '.jade');
+	      var view = __webpack_require__(16)("./" + pageId);
+	      var template = __webpack_require__(19)("./" + pageId + '.jade');
 	      var data = {
-	        page: _appRouter2['default'].data.pages[_appRouter2['default'].pageId],
-	        user: _appRouter2['default'].data.users[_appRouter2['default'].userId] || void 0
+	        page: this.data.pages[pageId],
+	        user: this.data.users[userId] || void 0
 	      };
 
 	      this.renderTemplate(template, data);
@@ -164,7 +167,7 @@
 	    key: 'renderView',
 	    value: function renderView(view) {
 
-	      return new view();
+	      this.view = new view();
 	    }
 	  }, {
 	    key: 'renderCommonElements',
@@ -172,8 +175,8 @@
 
 	      var $body = (0, _jquery2['default'])('body');
 
-	      $body.prepend((0, _templatesCommonHeaderJade2['default'])(_appRouter2['default'].data.partials.header));
-	      $body.append((0, _templatesCommonFooterJade2['default'])(_appRouter2['default'].data.partials.footer));
+	      $body.prepend((0, _templatesCommonHeaderJade2['default'])(this.data.partials.header));
+	      $body.append((0, _templatesCommonFooterJade2['default'])(this.data.partials.footer));
 	    }
 	  }]);
 
@@ -9427,31 +9430,17 @@
 
 	var _appConfig2 = _interopRequireDefault(_appConfig);
 
-	var _appModel = __webpack_require__(11);
-
-	var _appModel2 = _interopRequireDefault(_appModel);
-
 	var AppRouter = (function () {
 	  function AppRouter() {
 	    _classCallCheck(this, AppRouter);
 
 	    (0, _happens2['default'])(this);
-
-	    this.bindEvents();
 	  }
 
 	  _createClass(AppRouter, [{
-	    key: 'bindEvents',
-	    value: function bindEvents() {
-
-	      _appModel2['default'].on('data:loaded', this.init.bind(this));
-	    }
-	  }, {
 	    key: 'init',
-	    value: function init(data) {
+	    value: function init() {
 	      var _this = this;
-
-	      this.data = data;
 
 	      _appConfig2['default'].routes.map(function (route) {
 
@@ -9464,17 +9453,15 @@
 	      (0, _page2['default'])('*', this.notFound.bind(this));
 
 	      (0, _page2['default'])();
-
-	      this.emit('router:ready');
 	    }
 	  }, {
 	    key: 'navigate',
 	    value: function navigate(ctx, route) {
 
-	      this.pageId = route.id;
-	      this.userId = ctx.params.id ? ctx.params.id : void 0;
+	      var pageId = route.id;
+	      var userId = ctx.params.id ? ctx.params.id : void 0;
 
-	      this.emit('url:changed');
+	      this.emit('url:changed', pageId, userId);
 	    }
 	  }, {
 	    key: 'notFound',

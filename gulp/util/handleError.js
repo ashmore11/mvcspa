@@ -9,8 +9,6 @@ export default function() {
 
 	gutil.beep();
 
-  console.log('fack')
-
 	// End the task
 	this.emit('end');
 

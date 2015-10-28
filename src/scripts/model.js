@@ -16,7 +16,7 @@ class AppModel {
 
     const url = `json/${Config.language}/data.json`;
 
-    $.getJSON(url).then((data) => {
+    $.getJSON(url).then(data => {
 
       this.emit('data:loaded', data);
 

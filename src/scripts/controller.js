@@ -1,5 +1,6 @@
 import $      from 'jquery';
 import Router from 'app/router';
+import Model  from 'app/model';
 import Header from 'templates/common/header.jade';
 import Footer from 'templates/common/footer.jade';
 
@@ -7,30 +8,29 @@ class AppController {
 
   constructor() {
 
-    this.bindEvents();
-
-  }
-
-  bindEvents() {
-
-    Router.once('router:ready', this.init.bind(this));
-    Router.on('url:changed', this.render.bind(this));
+    Model.on('data:loaded', this.init.bind(this));
     
   }
 
-  init() {
+  init(data) {
+
+    this.data = data;
 
     this.renderCommonElements();
 
+    Router.on('url:changed', this.render.bind(this));
+
+    Router.init();
+
   }
 
-  render() {
+  render(pageId, userId) {
 
-    const view     = require(`app/views/${Router.pageId}`);
-    const template = require(`templates/views/${Router.pageId}.jade`);
+    const view     = require(`app/views/${pageId}`);
+    const template = require(`templates/views/${pageId}.jade`);
     const data     = {
-      page: Router.data.pages[Router.pageId],
-      user: Router.data.users[Router.userId] || void 0,
+      page: this.data.pages[pageId],
+      user: this.data.users[userId] || void 0,
     };
 
     this.renderTemplate(template, data);
@@ -49,7 +49,7 @@ class AppController {
 
   renderView(view) {
 
-    return new view();
+    this.view = new view();
 
   }
 
@@ -57,8 +57,8 @@ class AppController {
 
     const $body = $('body');
 
-    $body.prepend(Header(Router.data.partials.header));
-    $body.append(Footer(Router.data.partials.footer));
+    $body.prepend(Header(this.data.partials.header));
+    $body.append(Footer(this.data.partials.footer));
 
   }
 

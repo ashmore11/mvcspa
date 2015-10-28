@@ -25,7 +25,7 @@ gulp.task('scripts', function() {
 		.pipe(gulpif(production, uglify()))
 		.pipe(rename(paths.filename))
 		.pipe(gulp.dest(paths.destination))
-	
+		
 		.on('error', handleError);
 
 });

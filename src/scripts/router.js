@@ -1,7 +1,6 @@
 import Happens from 'happens';
 import Page    from 'page';
 import Config  from 'app/config';
-import Model   from 'app/model';
 
 class AppRouter {
 
@@ -9,23 +8,13 @@ class AppRouter {
 
     Happens(this);
 
-    this.bindEvents();
-
   }
 
-  bindEvents() {
+  init() {
 
-    Model.on('data:loaded', this.init.bind(this));
-
-  }
-
-  init(data) {
-
-    this.data = data;
-
-    Config.routes.map((route) => {
+    Config.routes.map(route => {
       
-      Page(route.path, (ctx) => {
+      Page(route.path, ctx => {
 
         this.navigate(ctx, route);
 
@@ -37,16 +26,14 @@ class AppRouter {
 
     Page();
 
-    this.emit('router:ready');
-
   }
 
   navigate(ctx, route) {
 
-    this.pageId = route.id
-    this.userId = ctx.params.id ? ctx.params.id : void 0;
+    const pageId = route.id;
+    const userId = ctx.params.id ? ctx.params.id : void 0;
 
-    this.emit('url:changed');
+    this.emit('url:changed', pageId, userId);
 
   }
 

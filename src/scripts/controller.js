@@ -2,11 +2,11 @@ import Router from 'app/router';
 import Header from 'templates/common/header.jade';
 import Footer from 'templates/common/footer.jade';
 
-class Controller {
+class AppController {
 
   constructor() {
 
-    Router.once('data:ready', this.init.bind(this));
+    Router.once('router:ready', this.init.bind(this));
     Router.on('url:changed', this.render.bind(this));
 
   }
@@ -23,7 +23,7 @@ class Controller {
     const Template = require(`templates/views/${Router.pageId}.jade`);
     const Data     = {
       page: Router.data.pages[Router.pageId],
-      user: Router.data.users[Router.userId],
+      user: Router.data.users[Router.userId] || void 0,
     };
 
     document.title = Data.page.meta.title;
@@ -45,4 +45,4 @@ class Controller {
 
 }
 
-export default Controller;
+export default AppController;

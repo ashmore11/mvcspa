@@ -3,7 +3,7 @@ import Page    from 'page';
 import Config  from 'app/config';
 import Model   from 'app/model';
 
-class Router {
+class AppRouter {
 
   constructor() {
 
@@ -29,7 +29,7 @@ class Router {
     Page('*', this.notFound.bind(this));
     Page();
 
-    this.emit('data:ready');
+    this.emit('router:ready');
 
   }
 
@@ -37,10 +37,10 @@ class Router {
 
     let id = ctx.path.split('/')[1];
 
-    if (id.length === 0) { id = 'home'; }
+    if(id.length === 0) { id = 'home'; }
 
     this.pageId = id;
-    this.userId = ctx.params.id ? ctx.params.id : null;
+    this.userId = ctx.params.id ? ctx.params.id : void 0;
 
     this.emit('url:changed');
 
@@ -60,4 +60,4 @@ class Router {
 
 }
 
-export default new Router();
+export default new AppRouter();

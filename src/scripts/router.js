@@ -23,12 +23,7 @@ class AppRouter {
 
     this.data = data;
 
-    this.routes = [
-      {id: 'home',     path: '/'},
-      {id: 'example',  path: '/example/:id?'}
-    ];
-
-    this.routes.map((route) => {
+    Config.routes.map((route) => {
       
       Page(route.path, (ctx) => {
 
@@ -60,11 +55,7 @@ class AppRouter {
     console.error('404 page not found for:', ctx.path);
     console.warn('Redirecting to home...');
 
-    setTimeout(function(){
-
-      Page.redirect('/');
-
-    }, 1000);
+    Page.redirect('/');
 
   }
 

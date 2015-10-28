@@ -75,12 +75,13 @@
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
-		value: true
+	  value: true
 	});
 	exports['default'] = {
-		debug: true,
-		language: 'en',
-		basepath: ''
+	  debug: true,
+	  language: 'en',
+	  basepath: '',
+	  routes: [{ id: 'home', path: '/' }, { id: 'example', path: '/example/:id?' }]
 	};
 	module.exports = exports['default'];
 
@@ -9452,9 +9453,7 @@
 
 	      this.data = data;
 
-	      this.routes = [{ id: 'home', path: '/' }, { id: 'example', path: '/example/:id?' }];
-
-	      this.routes.map(function (route) {
+	      _appConfig2['default'].routes.map(function (route) {
 
 	        (0, _page2['default'])(route.path, function (ctx) {
 
@@ -9484,10 +9483,7 @@
 	      console.error('404 page not found for:', ctx.path);
 	      console.warn('Redirecting to home...');
 
-	      setTimeout(function () {
-
-	        _page2['default'].redirect('/');
-	      }, 1000);
+	      _page2['default'].redirect('/');
 	    }
 	  }]);
 

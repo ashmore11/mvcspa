@@ -1,8 +1,10 @@
+import $ from 'jquery';
+
 class HomeView {
 
   constructor() {
 
-    this.el = $('#home');
+    this.$el = $('#home');
 
     console.log('--[ VIEW: HOME ]--');
 

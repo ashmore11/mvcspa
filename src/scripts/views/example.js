@@ -1,8 +1,10 @@
+import $ from 'jquery';
+
 class ExampleView {
 
   constructor() {
 
-    this.el = $('#example');
+    this.$el = $('#example');
 
     console.log('--[ VIEW: EXAMPLE ]--');
 

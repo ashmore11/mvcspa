@@ -1,3 +1,4 @@
+import $       from 'jquery';
 import Happens from 'happens';
 import Config  from 'app/config';
 
@@ -7,15 +8,15 @@ class AppModel {
 
     Happens(this);
 
+    this.getData();
+
+  }
+
+  getData() {
+
     const url = `json/${Config.language}/data.json`;
 
-    const promise = fetch(url).then(function(response) {
-    
-      return response.json();
-
-    });
-
-    promise.then((data) => {
+    $.getJSON(url).then((data) => {
 
       this.emit('data:loaded', data);
 

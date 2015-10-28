@@ -1,3 +1,4 @@
+import $      from 'jquery';
 import Router from 'app/router';
 import Header from 'templates/common/header.jade';
 import Footer from 'templates/common/footer.jade';
@@ -25,20 +26,30 @@ class AppController {
 
   render() {
 
-    const View     = require(`app/views/${Router.pageId}`);
-    const Template = require(`templates/views/${Router.pageId}.jade`);
-    const Data     = {
+    const view     = require(`app/views/${Router.pageId}`);
+    const template = require(`templates/views/${Router.pageId}.jade`);
+    const data     = {
       page: Router.data.pages[Router.pageId],
       user: Router.data.users[Router.userId] || void 0,
     };
 
-    document.title = Data.page.meta.title;
+    this.renderTemplate(template, data);
+
+    this.renderView(view);
+
+  }
+
+  renderTemplate(template, data) {
 
     const $main = $('#main');
 
-    $main.html(Template(Data));
+    $main.html(template(data));
 
-    this.view = new View();
+  }
+
+  renderView(view) {
+
+    return new view();
 
   }
 

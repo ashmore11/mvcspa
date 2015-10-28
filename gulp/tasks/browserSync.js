@@ -4,7 +4,7 @@ import modRewrite  from 'connect-modrewrite';
 
 browserSync.create();
 
-gulp.task('browserSync', () => {
+gulp.task('browserSync', function() {
 
   browserSync.init({
 

@@ -23,10 +23,9 @@ class Router {
 
     this.data = data;
 
-    Page('/', this.navigate.bind(this));
-    Page('/example', this.navigate.bind(this));
-    Page('/example/:id', this.navigate.bind(this));
-    Page('*', this.notFound.bind(this));
+    Page('/',             this.navigate.bind(this));
+    Page('/example/:id?', this.navigate.bind(this));
+    Page('*',             this.notFound.bind(this));
     Page();
 
     this.emit('data:ready');
@@ -37,7 +36,7 @@ class Router {
 
     let id = ctx.path.split('/')[1];
 
-    if (id.length === 0) { id = 'home'; }
+    if(id.length === 0) { id = 'home'; }
 
     this.pageId = id;
     this.userId = ctx.params.id ? ctx.params.id : null;
@@ -54,7 +53,14 @@ class Router {
 
   notFound(ctx) {
 
-    console.warn('404 page not found for:', ctx.path);
+    console.error('404 page not found for:', ctx.path);
+    console.warn('Redirecting to home...');
+
+    setTimeout(function(){
+
+      Page.redirect('/');
+
+    }, 1000);
 
   }
 

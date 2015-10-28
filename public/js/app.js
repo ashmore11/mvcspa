@@ -10897,11 +10897,17 @@
 	  function Controller() {
 	    _classCallCheck(this, Controller);
 
-	    _appRouter2['default'].once('data:ready', this.init.bind(this));
-	    _appRouter2['default'].on('url:changed', this.render.bind(this));
+	    this.bindEvents();
 	  }
 
 	  _createClass(Controller, [{
+	    key: 'bindEvents',
+	    value: function bindEvents() {
+
+	      _appRouter2['default'].once('data:ready', this.init.bind(this));
+	      _appRouter2['default'].on('url:changed', this.render.bind(this));
+	    }
+	  }, {
 	    key: 'init',
 	    value: function init() {
 
@@ -10920,7 +10926,9 @@
 
 	      document.title = Data.page.meta.title;
 
-	      $('#main').html(Template(Data));
+	      var $main = $('#main');
+
+	      $main.html(Template(Data));
 
 	      this.view = new View();
 	    }
@@ -10928,10 +10936,10 @@
 	    key: 'renderCommonElements',
 	    value: function renderCommonElements() {
 
-	      var body = $('body');
+	      var $body = $('body');
 
-	      body.prepend((0, _templatesCommonHeaderJade2['default'])(_appRouter2['default'].data.partials.header));
-	      body.append((0, _templatesCommonFooterJade2['default'])(_appRouter2['default'].data.partials.footer));
+	      $body.prepend((0, _templatesCommonHeaderJade2['default'])(_appRouter2['default'].data.partials.header));
+	      $body.append((0, _templatesCommonFooterJade2['default'])(_appRouter2['default'].data.partials.footer));
 	    }
 	  }]);
 
@@ -10995,8 +11003,7 @@
 	      this.data = data;
 
 	      (0, _page2['default'])('/', this.navigate.bind(this));
-	      (0, _page2['default'])('/example', this.navigate.bind(this));
-	      (0, _page2['default'])('/example/:id', this.navigate.bind(this));
+	      (0, _page2['default'])('/example/:id?', this.navigate.bind(this));
 	      (0, _page2['default'])('*', this.notFound.bind(this));
 	      (0, _page2['default'])();
 
@@ -11027,7 +11034,13 @@
 	    key: 'notFound',
 	    value: function notFound(ctx) {
 
-	      console.warn('404 page not found for:', ctx.path);
+	      console.error('404 page not found for:', ctx.path);
+	      console.warn('Redirecting to home...');
+
+	      setTimeout(function () {
+
+	        _page2['default'].redirect('/');
+	      }, 1000);
 	    }
 	  }]);
 

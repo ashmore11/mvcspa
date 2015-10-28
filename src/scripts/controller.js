@@ -6,9 +6,15 @@ class Controller {
 
   constructor() {
 
+    this.bindEvents();
+
+  }
+
+  bindEvents() {
+
     Router.once('data:ready', this.init.bind(this));
     Router.on('url:changed', this.render.bind(this));
-
+    
   }
 
   init() {
@@ -28,7 +34,9 @@ class Controller {
 
     document.title = Data.page.meta.title;
 
-    $('#main').html(Template(Data));
+    const $main = $('#main');
+
+    $main.html(Template(Data));
 
     this.view = new View();
 
@@ -36,10 +44,10 @@ class Controller {
 
   renderCommonElements() {
 
-    const body = $('body');
+    const $body = $('body');
 
-    body.prepend(Header(Router.data.partials.header));
-    body.append(Footer(Router.data.partials.footer));
+    $body.prepend(Header(Router.data.partials.header));
+    $body.append(Footer(Router.data.partials.footer));
 
   }
 

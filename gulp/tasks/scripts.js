@@ -17,7 +17,7 @@ const paths = {
 	filename    : 'app.js',
 };
 
-gulp.task('scripts', () => {
+gulp.task('scripts', function() {
 	
 	gulp.src(paths.source)
 

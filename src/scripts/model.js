@@ -7,15 +7,15 @@ class Model {
 
     Happens(this);
 
-    let url = `json/${Config.language}/data.json`;
+    const url = `json/${Config.language}/data.json`;
 
-    let promise = fetch(url).then(response => {
+    const promise = fetch(url).then(function(response) {
     
       return response.json();
 
     });
 
-    promise.then(data => {
+    promise.then((data) => {
 
       this.emit('data:loaded', data);
 

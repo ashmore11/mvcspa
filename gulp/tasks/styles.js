@@ -1,4 +1,5 @@
 import gulp        from 'gulp';
+import gulpif      from 'gulp-if';
 import stylus      from 'gulp-stylus';
 import nib         from 'nib';
 import rupture     from 'rupture';
@@ -16,24 +17,23 @@ const paths = {
   destination : './public/css/',
 };
 
+const stylusConfig = {
+  set    : ['include css'],
+  use    : [nib(), rupture(), jeet()],
+  linenos: development,
+};
+
 gulp.task('styles', function() {
 
   console.log('\n:::::_ S T Y L E S _:::::\n');
   
-  const styles = gulp.src(paths.source)
+  gulp.src(paths.source)
     
-    .pipe(stylus({
-      set    : ['include css'],
-      use    : [nib(), rupture(), jeet()],
-      linenos: development,
-    }))
+    .pipe(stylus(stylusConfig))
+    .pipe(gulpif(production, CSSmin()))
+    .pipe(gulp.dest(paths.destination))
+    .pipe(gulpif(development, browserSync.stream()))
 
     .on('error', handleError);
-  
-  if(production) { styles.pipe(CSSmin()); }
-  
-  styles.pipe(gulp.dest(paths.destination));
-  
-  styles.pipe(browserSync.stream());
 
 });

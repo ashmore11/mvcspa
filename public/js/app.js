@@ -10747,7 +10747,7 @@
 
 	      var url = 'json/' + _appConfig2['default'].language + '/data.json';
 
-	      _jquery2['default'].getJSON(url).then(function (data) {
+	      _jquery2['default'].get(url).then(function (data) {
 
 	        _this.emit('data:loaded', data);
 	      });

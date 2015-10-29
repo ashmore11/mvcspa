@@ -1,6 +1,5 @@
 import Happens from 'happens';
 import Page    from 'page';
-import Config  from 'app/config';
 
 class AppRouter {
 
@@ -8,11 +7,16 @@ class AppRouter {
 
     Happens(this);
 
+    this.routes = [
+      {id: 'home',     path: '/'},
+      {id: 'example',  path: '/example/:id?'}
+    ]
+
   }
 
   init() {
 
-    Config.routes.map(route => {
+    this.routes.map(route => {
       
       Page(route.path, ctx => {
 

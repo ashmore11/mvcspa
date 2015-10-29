@@ -18,6 +18,8 @@ const paths = {
 };
 
 gulp.task('scripts', function() {
+
+	console.log('\n::::::_ S C R I P T S _:::::\n');
 	
 	gulp.src(paths.source)
 

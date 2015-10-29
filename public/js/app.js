@@ -75,13 +75,12 @@
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
-	  value: true
+		value: true
 	});
 	exports['default'] = {
-	  debug: true,
-	  language: 'en',
-	  basepath: '',
-	  routes: [{ id: 'home', path: '/' }, { id: 'example', path: '/example/:id?' }]
+		debug: true,
+		language: 'en',
+		basepath: ''
 	};
 	module.exports = exports['default'];
 
@@ -9426,15 +9425,13 @@
 
 	var _page2 = _interopRequireDefault(_page);
 
-	var _appConfig = __webpack_require__(2);
-
-	var _appConfig2 = _interopRequireDefault(_appConfig);
-
 	var AppRouter = (function () {
 	  function AppRouter() {
 	    _classCallCheck(this, AppRouter);
 
 	    (0, _happens2['default'])(this);
+
+	    this.routes = [{ id: 'home', path: '/' }, { id: 'example', path: '/example/:id?' }];
 	  }
 
 	  _createClass(AppRouter, [{
@@ -9442,7 +9439,7 @@
 	    value: function init() {
 	      var _this = this;
 
-	      _appConfig2['default'].routes.map(function (route) {
+	      this.routes.map(function (route) {
 
 	        (0, _page2['default'])(route.path, function (ctx) {
 
@@ -11164,7 +11161,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (page, undefined, user) {
-	buf.push("<div id=\"example\"><h1>" + (jade.escape((jade_interp = page.title) == null ? '' : jade_interp)) + "</h1><ul><li><a href=\"/example/john-smith\">John Smith</a></li><li><a href=\"/example/tom-jones\">Tom Jones</a></li></ul>");
+	buf.push("<div id=\"example\" class=\"page\"><h1>" + (jade.escape((jade_interp = page.title) == null ? '' : jade_interp)) + "</h1><ul><li><a href=\"/example/john-smith\">John Smith</a></li><li><a href=\"/example/tom-jones\">Tom Jones</a></li></ul>");
 	if ( user)
 	{
 	buf.push(null == (jade_interp = __webpack_require__(21).call(this, locals)) ? "" : jade_interp);
@@ -11197,7 +11194,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (page) {
-	buf.push("<div id=\"home\"><h1>" + (jade.escape((jade_interp = page.title) == null ? '' : jade_interp)) + "</h1></div>");}.call(this,"page" in locals_for_with?locals_for_with.page:typeof page!=="undefined"?page:undefined));;return buf.join("");
+	buf.push("<div id=\"home\" class=\"page\"><h1>" + (jade.escape((jade_interp = page.title) == null ? '' : jade_interp)) + "</h1></div>");}.call(this,"page" in locals_for_with?locals_for_with.page:typeof page!=="undefined"?page:undefined));;return buf.join("");
 	}
 
 /***/ }

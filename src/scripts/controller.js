@@ -1,3 +1,7 @@
+/**
+ * @fileoverview ~ Gather data and render views
+ */
+
 import $      from 'jquery';
 import Router from 'app/router';
 import Model  from 'app/model';

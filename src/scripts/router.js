@@ -1,3 +1,7 @@
+/**
+ * @fileoverview ~ Handle the routing for the application
+ */
+
 import Happens from 'happens';
 import Page    from 'page';
 

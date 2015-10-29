@@ -1,3 +1,7 @@
+/**
+ * @fileoverview ~ Starting point of the application
+ */
+
 import Config     from 'app/config';
 import Controller from 'app/controller';
 

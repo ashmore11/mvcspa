@@ -4,32 +4,17 @@ import gulpif        from 'gulp-if';
 import uglify        from 'gulp-uglify';
 import rename        from 'gulp-rename';
 import handleError   from '../util/handleError';
-import webpackConfig from '../../webpack.config.js';
-
-const production  = process.env.NODE_ENV === 'production';
-const development = process.env.NODE_ENV === 'development';
-const base_path   = process.env.PWD;
-
-const paths = {
-	source      : './src/scripts/app.js',
-	watch       : './src/**/*.js',
-	destination : './public/js/',
-	filename    : 'app.js',
-};
+import config        from '../util/config';
 
 gulp.task('scripts', function() {
-
-	console.log('\n::::::_ S C R I P T S _:::::\n');
 	
-	gulp.src(paths.source)
+	gulp.src(config.paths.scripts.source)
 
-		.pipe(webpack(webpackConfig))
-		.pipe(gulpif(production, uglify()))
-		.pipe(rename(paths.filename))
-		.pipe(gulp.dest(paths.destination))
+		.pipe(webpack(config.webpack))
+		.pipe(gulpif(config.production, uglify()))
+		.pipe(rename(config.paths.scripts.filename))
+		.pipe(gulp.dest(config.paths.scripts.destination))
 		
 		.on('error', handleError);
 
 });
-
-export default paths;

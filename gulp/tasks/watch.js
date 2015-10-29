@@ -1,12 +1,12 @@
 import gulp        from 'gulp';
 import browserSync from 'browser-sync';
-import scripts     from './scripts';
+import config      from '../util/config';
 
 gulp.task('watch', function() {
 
-	gulp.watch('./src/**/*.js',   ['scripts', browserSync.reload]);
-	gulp.watch('./src/**/*.jade', ['scripts', browserSync.reload]);
-	gulp.watch('./src/**/*.styl', ['styles']);
+	gulp.watch(config.paths.scripts.watch, ['scripts', browserSync.reload]);
+	gulp.watch(config.paths.templates.watch, ['scripts', browserSync.reload]);
+	gulp.watch(config.paths.styles.watch, ['styles']);
 
 	gulp.emit('update');
 

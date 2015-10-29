@@ -1,3 +1,7 @@
+/**
+ *
+ */
+
 import $       from 'jquery';
 import Happens from 'happens';
 import Config  from 'app/config';

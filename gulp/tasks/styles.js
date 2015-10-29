@@ -7,32 +7,21 @@ import jeet        from 'jeet';
 import handleError from '../util/handleError';
 import CSSmin      from 'gulp-minify-css';
 import browserSync from 'browser-sync';
-
-const development = process.env.NODE_ENV === 'development';
-const production  = process.env.NODE_ENV === 'production';
-
-const paths = {
-  source      : './src/styles/app.styl',
-  watch       : 'src/styles/**/*.styl',
-  destination : './public/css/',
-};
-
-const stylusConfig = {
-  set    : ['include css'],
-  use    : [nib(), rupture(), jeet()],
-  linenos: development,
-};
+import config      from '../util/config';
 
 gulp.task('styles', function() {
-
-  console.log('\n:::::_ S T Y L E S _:::::\n');
   
-  gulp.src(paths.source)
+  gulp.src(config.paths.styles.source)
     
-    .pipe(stylus(stylusConfig))
-    .pipe(gulpif(production, CSSmin()))
-    .pipe(gulp.dest(paths.destination))
-    .pipe(gulpif(development, browserSync.stream()))
+    .pipe(stylus({
+      set: ['include css'],
+      use: [nib(), rupture(), jeet()],
+      linenos: config.development,
+    }))
+
+    .pipe(gulpif(config.production, CSSmin()))
+    .pipe(gulp.dest(config.paths.styles.destination))
+    .pipe(gulpif(config.development, browserSync.stream()))
 
     .on('error', handleError);
 

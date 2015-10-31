@@ -1,3 +1,5 @@
+import modRewrite from 'connect-modrewrite';
+
 export default {
 
   production: process.env.NODE_ENV === 'production',
@@ -23,12 +25,12 @@ export default {
 
   webpack: {
     output: {
-      path: process.env.PWD + "/public",
+      path: process.env.PWD + '/public',
       filename: 'app.js',
     },
     module: {
       loaders: [
-        { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }, 
+        { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }, 
         { test: /\.jade$/, loader: 'jade-loader' },
       ]
     },
@@ -39,6 +41,20 @@ export default {
         templates: process.env.PWD + '/src/templates',
       }
     }
-  }
+  },
+
+  browserSync: {
+    open: false,
+    notify: true,
+    reloadDelay: 500,
+    server: {
+      baseDir: process.env.PWD + '/public',
+      middleware: [
+        modRewrite([
+          '!\\.\\w+$ /index.html [L]'
+        ])
+      ]
+    }
+  },
 
 }

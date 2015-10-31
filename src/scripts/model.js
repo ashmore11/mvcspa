@@ -1,5 +1,5 @@
 /**
- *
+ * @fileoverview ~ Parse data from external JSON
  */
 
 import $       from 'jquery';

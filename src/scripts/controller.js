@@ -1,5 +1,5 @@
 /**
- * @fileoverview ~ Gather data and render views
+ * @fileoverview ~ Gather data from the model and render views
  */
 
 import $      from 'jquery';

@@ -17,7 +17,7 @@ export default {
     styles: {
       source: './src/styles/app.styl',
       watch: 'src/styles/**/*.styl',
-      destination : './public/css/',
+      destination: './public/css/',
     }
   },
 
@@ -38,9 +38,6 @@ export default {
         app: process.env.PWD + '/src/scripts',
         templates: process.env.PWD + '/src/templates',
       }
-    },
-    node: {
-      fs: 'empty',
     }
   }
 

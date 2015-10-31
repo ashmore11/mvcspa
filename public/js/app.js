@@ -44,6 +44,10 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/**
+	 * @fileoverview ~ Starting point of the application
+	 */
+
 	'use strict';
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -59,10 +63,10 @@
 	var _appController2 = _interopRequireDefault(_appController);
 
 	var App = function App() {
-	   _classCallCheck(this, App);
+	  _classCallCheck(this, App);
 
-	   this.controller = new _appController2['default']();
-	   this.config = _appConfig2['default'];
+	  this.controller = new _appController2['default']();
+	  this.config = _appConfig2['default'];
 	};
 
 	window.APP = new App();
@@ -72,21 +76,29 @@
 /* 2 */
 /***/ function(module, exports) {
 
+	/**
+	 * @fileoverview ~ Config for the apps environment variables
+	 */
+
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
-		value: true
+	  value: true
 	});
 	exports['default'] = {
-		debug: true,
-		language: 'en',
-		basepath: ''
+	  debug: true,
+	  language: 'en',
+	  basepath: ''
 	};
 	module.exports = exports['default'];
 
 /***/ },
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * @fileoverview ~ Gather data from the model and render views
+	 */
 
 	'use strict';
 
@@ -9405,6 +9417,10 @@
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/**
+	 * @fileoverview ~ Handle the routing for the application
+	 */
+
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
@@ -10706,6 +10722,10 @@
 /***/ },
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * @fileoverview ~ Parse data from external JSON
+	 */
 
 	'use strict';
 

@@ -1,7 +1,7 @@
 import $        from 'jquery';
 import Template from 'templates/common/footer.jade';
 
-class Footer {
+export default class Footer {
 
   constructor(data) {
 
@@ -20,5 +20,3 @@ class Footer {
   }
 
 }
-
-export default Footer;

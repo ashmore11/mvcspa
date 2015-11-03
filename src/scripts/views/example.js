@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-class ExampleView {
+export default class ExampleView {
 
   constructor() {
 
@@ -11,5 +11,3 @@ class ExampleView {
   }
 
 }
-
-export default ExampleView;

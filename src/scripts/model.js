@@ -1,11 +1,11 @@
-import Config from 'app/config';
+import {language} from 'app/config';
 
 const Model = function() {
 
-  const url = `json/${Config.language}/data.json`;
+  const url = `json/${language}/data.json`;
 
   return fetch(url).then(response => { return response.json(); });
 
 }
 
-export {Model};
+export default Model;

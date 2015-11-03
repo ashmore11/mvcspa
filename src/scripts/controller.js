@@ -1,16 +1,9 @@
 import $       from 'jquery';
-import {Model} from 'app/model';
 import Router  from 'app/router';
 import Header  from 'app/common/header.js';
 import Footer  from 'app/common/footer.js';
 
-class AppController {
-
-  constructor() {
-
-    Model().then(data => { this.init(data); });
-    
-  }
+export default class AppController {
 
   init(data) {
 
@@ -61,5 +54,3 @@ class AppController {
   }
 
 }
-
-export default AppController;

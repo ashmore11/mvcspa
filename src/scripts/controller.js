@@ -1,18 +1,14 @@
-/**
- * @fileoverview ~ Gather data from the model and render views
- */
-
-import $      from 'jquery';
-import Router from 'app/router';
-import Model  from 'app/model';
-import Header from 'templates/common/header.jade';
-import Footer from 'templates/common/footer.jade';
+import $       from 'jquery';
+import {Model} from 'app/model';
+import Router  from 'app/router';
+import Header  from 'app/common/header.js';
+import Footer  from 'app/common/footer.js';
 
 class AppController {
 
   constructor() {
 
-    Model.on('data:loaded', this.init.bind(this));
+    Model().then(data => { this.init(data); });
     
   }
 
@@ -59,10 +55,8 @@ class AppController {
 
   renderCommonElements() {
 
-    const $body = $('body');
-
-    $body.prepend(Header(this.data.partials.header));
-    $body.append(Footer(this.data.partials.footer));
+    const header = new Header(this.data.partials.header);
+    const footer = new Footer(this.data.partials.footer);
 
   }
 

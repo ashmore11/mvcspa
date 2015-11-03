@@ -1,33 +1,11 @@
-/**
- * @fileoverview ~ Parse data from external JSON
- */
+import Config from 'app/config';
 
-import $       from 'jquery';
-import Happens from 'happens';
-import Config  from 'app/config';
+const Model = function() {
 
-class AppModel {
+  const url = `json/${Config.language}/data.json`;
 
-  constructor() {
-
-    Happens(this);
-
-    this.getData();
-
-  }
-
-  getData() {
-
-    const url = `json/${Config.language}/data.json`;
-
-    $.get(url).then(data => {
-
-      this.emit('data:loaded', data);
-
-    });
-
-  }
+  return fetch(url).then(response => { return response.json(); });
 
 }
 
-export default new AppModel();
+export {Model};

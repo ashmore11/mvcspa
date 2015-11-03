@@ -20,4 +20,4 @@ class App {
 
 }
 
-window.APP = new App();
+export default new App();

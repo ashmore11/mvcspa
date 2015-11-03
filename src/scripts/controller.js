@@ -1,7 +1,6 @@
-import $       from 'jquery';
-import Router  from 'app/router';
-import Header  from 'app/common/header.js';
-import Footer  from 'app/common/footer.js';
+import Router from 'app/router';
+import Header from 'app/common/header.js';
+import Footer from 'app/common/footer.js';
 
 export default class AppController {
 
@@ -34,9 +33,9 @@ export default class AppController {
 
   renderTemplate(template, data) {
 
-    const $main = $('#main');
+    const main = document.getElementById('main');
 
-    $main.html(template(data));
+    main.innerHTML = template(data);
 
   }
 

@@ -1,4 +1,3 @@
-import $        from 'jquery';
 import {routes} from 'app/router';
 import Template from 'templates/common/header.jade';
 
@@ -14,9 +13,12 @@ export default class Header {
 
   render() {
 
-    const $body = $('body');
+    const body = document.body;
+    const div  = document.createElement('div');
 
-    $body.prepend(Template(this.data));
+    div.innerHTML = Template(this.data);
+
+    body.insertBefore(div.firstChild, body.childNodes[0]);
 
   }
 

@@ -1,4 +1,3 @@
-import $        from 'jquery';
 import Template from 'templates/common/footer.jade';
 
 export default class Footer {
@@ -13,9 +12,12 @@ export default class Footer {
 
   render() {
 
-    const $body = $('body');
+    const body = document.body;
+    const div  = document.createElement('div');
 
-    $body.append(Template(this.data));
+    div.innerHTML = Template(this.data);
+
+    body.appendChild(div.firstChild);
 
   }
 

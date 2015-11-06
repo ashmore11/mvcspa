@@ -44,7 +44,7 @@ class AppRouter {
 
   /**
    * Navigate to the current url
-   * @param {Object} Context data relative to the current route
+   * @param {Object} Context data relative to the current url
    * @param {Object} Information about the current route (id/path)
    */
   navigate(ctx, route) {
@@ -57,8 +57,8 @@ class AppRouter {
   }
 
   /**
-   * Navigate to 404 page if route not found
-   * @param {Object} Context data relative to the current route
+   * Navigate to 404 page if route doesn't exist for the current url
+   * @param {Object} Context data relative to the current url
    */
   notFound(ctx) {
 

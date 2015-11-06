@@ -79,6 +79,11 @@
 	    });
 	  }
 
+	  /**
+	   * Execute the app
+	   * @param {Object} Object containing all the data needed for the app
+	   */
+
 	  _createClass(App, [{
 	    key: 'start',
 	    value: function start(data) {
@@ -108,6 +113,9 @@
 
 	var _appConfig = __webpack_require__(3);
 
+	/**
+	 * Use the fetch API to grab the apps data from an external file
+	 */
 	var Model = function Model() {
 
 	  var url = 'json/' + _appConfig.language + '/data.json';
@@ -124,15 +132,18 @@
 /* 3 */
 /***/ function(module, exports) {
 
+	/**
+	 * All the environment variables used within the app
+	 */
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
-		value: true
+	  value: true
 	});
 	exports['default'] = {
-		debug: true,
-		language: 'en',
-		basepath: ''
+	  debug: true,
+	  language: 'en',
+	  basepath: ''
 	};
 	module.exports = exports['default'];
 
@@ -171,6 +182,11 @@
 
 	  _createClass(AppController, [{
 	    key: 'init',
+
+	    /**
+	     * Initialise the apps controller
+	     * @param {Object} Object containing all the data needed for the app
+	     */
 	    value: function init(data) {
 
 	      this.data = data;
@@ -181,6 +197,12 @@
 
 	      _appRouter2['default'].init();
 	    }
+
+	    /**
+	     * Render the view
+	     * @param {String} Id of the page to be rendered
+	     * @param {String} User Paramater passed from the url
+	     */
 	  }, {
 	    key: 'render',
 	    value: function render(pageId, userId) {
@@ -196,6 +218,12 @@
 
 	      this.renderView(view);
 	    }
+
+	    /**
+	     * Render the Jade template
+	     * @param {String} String of html
+	     * @param {Object} Data specific to the current page
+	     */
 	  }, {
 	    key: 'renderTemplate',
 	    value: function renderTemplate(template, data) {
@@ -204,12 +232,21 @@
 
 	      main.innerHTML = template(data);
 	    }
+
+	    /**
+	     * Create the class to manipulate the html
+	     * @param {class}
+	     */
 	  }, {
 	    key: 'renderView',
 	    value: function renderView(view) {
 
 	      this.view = new view();
 	    }
+
+	    /**
+	     * Render the apps common elements (header/footer)
+	     */
 	  }, {
 	    key: 'renderCommonElements',
 	    value: function renderCommonElements() {
@@ -254,16 +291,28 @@
 	    _classCallCheck(this, AppRouter);
 
 	    (0, _happens2['default'])(this);
-
-	    this.routes = [{ id: 'home', path: '/' }, { id: 'example', path: '/example/:id?' }];
 	  }
 
+	  /**
+	   * Return an array of routes used by the app
+	   */
+
 	  _createClass(AppRouter, [{
+	    key: 'routes',
+	    value: function routes() {
+
+	      return [{ id: 'home', path: '/' }, { id: 'example', path: '/example/:id?' }];
+	    }
+
+	    /**
+	     * Initialise the apps router
+	     */
+	  }, {
 	    key: 'init',
 	    value: function init() {
 	      var _this = this;
 
-	      this.routes.map(function (route) {
+	      this.routes().map(function (route) {
 
 	        (0, _page2['default'])(route.path, function (ctx) {
 
@@ -275,6 +324,12 @@
 
 	      (0, _page2['default'])();
 	    }
+
+	    /**
+	     * Navigate to the current url
+	     * @param {Object} Context data relative to the current url
+	     * @param {Object} Information about the current route (id/path)
+	     */
 	  }, {
 	    key: 'navigate',
 	    value: function navigate(ctx, route) {
@@ -284,6 +339,11 @@
 
 	      this.emit('url:changed', pageId, userId);
 	    }
+
+	    /**
+	     * Navigate to 404 page if route doesn't exist for the current url
+	     * @param {Object} Context data relative to the current url
+	     */
 	  }, {
 	    key: 'notFound',
 	    value: function notFound(ctx) {

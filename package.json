@@ -38,7 +38,7 @@
     "gulp-util": "~2.2.17",
     "gulp-webpack": "^1.5.0",
     "happens": "^0.6.0",
-    "jade": "^1.7.0",
+    "jade": "^1.11.0",
     "jade-loader": "^0.7.0",
     "jeet": "^6.1.2",
     "nib": "^1.0.4",
@@ -49,6 +49,5 @@
     "underscore": "^1.8.3",
     "webpack": "^1.12.2"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

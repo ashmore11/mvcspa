@@ -11,7 +11,7 @@ class App {
   }
 
   /**
-   * Execute the Application
+   * Execute the app
    * @param {Object} Object containing all the data needed for the app
    */
   start(data) {

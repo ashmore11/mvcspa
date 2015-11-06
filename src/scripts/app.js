@@ -10,6 +10,10 @@ class App {
 
   }
 
+  /**
+   * Execute the Application
+   * @param {Object} Object containing all the data needed for the app
+   */
   start(data) {
 
     const controller = new Controller();

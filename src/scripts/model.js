@@ -1,5 +1,8 @@
 import {language} from 'app/config';
 
+/**
+ * Use the fetch API to grab the apps data from an external file
+ */
 const Model = function() {
 
   const url = `json/${language}/data.json`;

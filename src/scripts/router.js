@@ -7,16 +7,26 @@ class AppRouter {
 
     Happens(this);
 
-    this.routes = [
+  }
+
+  /**
+   * Return an array of routes used by the app
+   */
+  routes() {
+
+    return [
       {id: 'home',     path: '/'},
       {id: 'example',  path: '/example/:id?'}
     ]
 
   }
 
+  /**
+   * Initialise the apps router
+   */
   init() {
 
-    this.routes.map(route => {
+    this.routes().map(route => {
       
       Page(route.path, ctx => {
 
@@ -32,6 +42,11 @@ class AppRouter {
 
   }
 
+  /**
+   * Navigate to the current url
+   * @param {Object} Context data relative to the current route
+   * @param {Object} Information about the current route (id/path)
+   */
   navigate(ctx, route) {
 
     const pageId = route.id;
@@ -41,6 +56,10 @@ class AppRouter {
 
   }
 
+  /**
+   * Navigate to 404 page if route not found
+   * @param {Object} Context data relative to the current route
+   */
   notFound(ctx) {
 
     console.error('404 page not found for:', ctx.path);

@@ -6,13 +6,13 @@ export default class AppController {
 
   /**
    * Initialise the apps controller
-   * @param {Object} Object containing all the data needed for the app
+   * @param {Object} Object containing all the data required in the app
    */
   init(data) {
 
     this.data = data;
 
-    this.renderCommonElements();
+    this.renderCommonComponents();
 
     Router.on('url:changed', this.render.bind(this));
 
@@ -27,6 +27,7 @@ export default class AppController {
    */
   render(pageId, userId) {
 
+    // Dynamically require views/templates to render pages on the fly
     const view     = require(`app/views/${pageId}`);
     const template = require(`templates/views/${pageId}.jade`);
     const data     = {
@@ -54,7 +55,7 @@ export default class AppController {
   }
 
   /**
-   * Create the class to manipulate the html
+   * Create a class for manipulating the DOM
    * @param {class}
    */
   renderView(view) {
@@ -64,9 +65,9 @@ export default class AppController {
   }
 
   /**
-   * Render the apps common elements (header/footer)
+   * Render the apps common components (header/footer)
    */
-  renderCommonElements() {
+  renderCommonComponents() {
 
     const header = new Header(this.data.partials.header);
     const footer = new Footer(this.data.partials.footer);

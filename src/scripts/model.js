@@ -1,7 +1,7 @@
 import {language} from 'app/config';
 
 /**
- * Use the fetch API to grab the apps data from an external file
+ * Use the fetch API to grab the apps data from an external json file
  */
 const Model = function() {
 

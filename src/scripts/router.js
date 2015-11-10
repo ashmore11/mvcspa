@@ -5,6 +5,7 @@ class AppRouter {
 
   constructor() {
 
+    // Bind the happens event system to the AppRouter class
     Happens(this);
 
   }
@@ -15,14 +16,15 @@ class AppRouter {
   routes() {
 
     return [
-      {id: 'home',     path: '/'},
-      {id: 'example',  path: '/example/:id?'}
+      {id: 'home',    path: '/'},
+      {id: 'example', path: '/example/:id?'}
     ]
 
   }
 
   /**
-   * Initialise the apps router
+   * Setup routing using the page.js library
+   * Info ~> https://visionmedia.github.io/page.js/
    */
   init() {
 

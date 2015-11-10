@@ -60,10 +60,6 @@
 
 	var _appModel2 = _interopRequireDefault(_appModel);
 
-	var _appConfig = __webpack_require__(3);
-
-	var _appConfig2 = _interopRequireDefault(_appConfig);
-
 	var _appController = __webpack_require__(4);
 
 	var _appController2 = _interopRequireDefault(_appController);
@@ -74,6 +70,7 @@
 
 	    _classCallCheck(this, App);
 
+	    // Fetch the data from the model before starting the app
 	    (0, _appModel2['default'])().then(function (data) {
 	      _this.start(data);
 	    });
@@ -81,7 +78,7 @@
 
 	  /**
 	   * Execute the app
-	   * @param {Object} Object containing all the data needed for the app
+	   * @param {Object} Object containing all the data required in the app
 	   */
 
 	  _createClass(App, [{
@@ -114,7 +111,7 @@
 	var _appConfig = __webpack_require__(3);
 
 	/**
-	 * Use the fetch API to grab the apps data from an external file
+	 * Use the fetch API to grab the apps data from an external json file
 	 */
 	var Model = function Model() {
 
@@ -185,13 +182,13 @@
 
 	    /**
 	     * Initialise the apps controller
-	     * @param {Object} Object containing all the data needed for the app
+	     * @param {Object} Object containing all the data required in the app
 	     */
 	    value: function init(data) {
 
 	      this.data = data;
 
-	      this.renderCommonElements();
+	      this.renderCommonComponents();
 
 	      _appRouter2['default'].on('url:changed', this.render.bind(this));
 
@@ -207,6 +204,7 @@
 	    key: 'render',
 	    value: function render(pageId, userId) {
 
+	      // Dynamically require views/templates to render pages on the fly
 	      var view = __webpack_require__(17)("./" + pageId);
 	      var template = __webpack_require__(20)("./" + pageId + '.jade');
 	      var data = {
@@ -234,7 +232,7 @@
 	    }
 
 	    /**
-	     * Create the class to manipulate the html
+	     * Create a class for manipulating the DOM
 	     * @param {class}
 	     */
 	  }, {
@@ -245,11 +243,11 @@
 	    }
 
 	    /**
-	     * Render the apps common elements (header/footer)
+	     * Render the apps common components (header/footer)
 	     */
 	  }, {
-	    key: 'renderCommonElements',
-	    value: function renderCommonElements() {
+	    key: 'renderCommonComponents',
+	    value: function renderCommonComponents() {
 
 	      var header = new _appCommonHeaderJs2['default'](this.data.partials.header);
 	      var footer = new _appCommonFooterJs2['default'](this.data.partials.footer);
@@ -290,6 +288,7 @@
 	  function AppRouter() {
 	    _classCallCheck(this, AppRouter);
 
+	    // Bind the happens event system to the AppRouter class
 	    (0, _happens2['default'])(this);
 	  }
 
@@ -305,7 +304,8 @@
 	    }
 
 	    /**
-	     * Initialise the apps router
+	     * Setup routing using the page.js library
+	     * Info ~> https://visionmedia.github.io/page.js/
 	     */
 	  }, {
 	    key: 'init',

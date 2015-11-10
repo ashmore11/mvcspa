@@ -16,12 +16,12 @@ gulp.task('styles', function() {
     .pipe(stylus({
       set: ['include css'],
       use: [nib(), rupture(), jeet()],
-      linenos: config.development,
+      linenos: config.env.development,
     }))
 
-    .pipe(gulpif(config.production, CSSmin()))
+    .pipe(gulpif(config.env.production, CSSmin()))
     .pipe(gulp.dest(config.paths.styles.destination))
-    .pipe(gulpif(config.development, browserSync.stream()))
+    .pipe(gulpif(config.env.development, browserSync.stream()))
 
     .on('error', handleError);
 

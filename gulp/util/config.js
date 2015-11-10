@@ -2,9 +2,11 @@ import modRewrite from 'connect-modrewrite';
 
 export default {
 
-  production: process.env.NODE_ENV === 'production',
-  development: process.env.NODE_ENV === 'development',
-  base_path: process.env.PWD,
+  env: {
+    production: process.env.NODE_ENV === 'production',
+    development: process.env.NODE_ENV === 'development',
+    base_path: process.env.PWD,
+  },
 
   paths: {
     scripts: {

@@ -1,2 +1,2 @@
 # mvcspa
-Single page application using the model view controller style
+Single page application boilerplate that takes advantage of ECMAScript 6, Jade templates, Stylus and Gulp

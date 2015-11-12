@@ -1,4 +1,4 @@
-import {routes} from 'app/router';
+import Router from '../router';
 
 export default class Header {
 

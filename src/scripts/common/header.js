@@ -1,5 +1,4 @@
 import {routes} from 'app/router';
-import Template from 'templates/common/header.jade';
 
 export default class Header {
 
@@ -13,10 +12,11 @@ export default class Header {
 
   render() {
 
-    const body = document.body;
-    const div  = document.createElement('div');
+    const body     = document.body;
+    const div      = document.createElement('div');
+    const template = Templates['common/header'];
 
-    div.innerHTML = Template(this.data);
+    div.innerHTML = template(this.data);
 
     body.insertBefore(div.firstChild, body.childNodes[0]);
 

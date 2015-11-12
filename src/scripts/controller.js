@@ -29,7 +29,8 @@ export default class AppController {
 
     // Dynamically require views/templates to render pages on the fly
     const view     = require(`app/views/${pageId}`);
-    const template = require(`templates/views/${pageId}.jade`);
+    // const template = require(`templates/views/${pageId}.jade`);
+    const template = Templates[`views/${pageId}`];
     const data     = {
       page: this.data.pages[pageId],
       user: this.data.users[userId] || void 0,

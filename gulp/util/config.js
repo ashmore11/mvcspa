@@ -16,7 +16,10 @@ export default {
       filename: 'app.js',
     },
     templates: {
+      source: './src/**/*.jade',
       watch: './src/**/*.jade',
+      destination: './public/js/',
+      filename: 'templates.js',
     },
     styles: {
       source: './src/styles/app.styl',

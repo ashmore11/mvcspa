@@ -1,5 +1,5 @@
 import gulp 		     from 'gulp';
-import webpack       from 'gulp-webpack';
+import rollup        from 'rollup';
 import gulpif        from 'gulp-if';
 import uglify        from 'gulp-uglify';
 import rename        from 'gulp-rename';
@@ -10,7 +10,8 @@ gulp.task('scripts', function() {
 	
 	gulp.src(config.paths.scripts.source)
 
-		.pipe(webpack(config.webpack))
+		.pipe(rollup.rollup({entry: config.paths.scripts.source}))
+
 		.pipe(gulpif(config.env.production, uglify()))
 		.pipe(rename(config.paths.scripts.filename))
 		.pipe(gulp.dest(config.paths.scripts.destination))

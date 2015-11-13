@@ -19,12 +19,14 @@ const comOpts = {
   exclude: [],
 };
 
+const babelOpts = {};
+
 gulp.task('scripts', function() {
 	
 	gulp.src(config.paths.scripts.source)
 
 		.pipe(rollup({
-      plugins: [commonjs(comOpts), npm(npmOpts), babel()]
+      plugins: [commonjs(comOpts), npm(npmOpts), babel(babelOpts)]
     }))
 		.pipe(gulpif(config.env.production, uglify()))
 		.pipe(rename(config.paths.scripts.filename))

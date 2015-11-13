@@ -28,26 +28,6 @@ export default {
     }
   },
 
-  webpack: {
-    output: {
-      path: process.env.PWD + '/public',
-      filename: 'app.js',
-    },
-    module: {
-      loaders: [
-        { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }, 
-        { test: /\.jade$/, loader: 'jade-loader' },
-      ]
-    },
-    resolve: {
-      extensions: ['', '.js'],
-      alias: {
-        app: process.env.PWD + '/src/scripts',
-        templates: process.env.PWD + '/src/templates',
-      }
-    }
-  },
-
   browserSync: {
     open: false,
     notify: true,

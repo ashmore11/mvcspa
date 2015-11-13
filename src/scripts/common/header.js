@@ -4,7 +4,7 @@ export default class Header {
 
   constructor(data) {
 
-    this.data = Object.assign(data, {routes});
+    this.data = Object.assign(data, Router.routes);
 
     this.render();
 

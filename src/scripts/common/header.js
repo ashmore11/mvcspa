@@ -4,7 +4,13 @@ export default class Header {
 
   constructor(data) {
 
-    this.data = Object.assign(data, Router.routes);
+    const routes = Router.routes.map(route => {
+      route.nav = true ? route : return
+    })
+
+    console.log(routes);
+
+    this.data = Object.assign(data, routes);
 
     this.render();
 

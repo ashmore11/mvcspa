@@ -28,6 +28,16 @@ export default {
     }
   },
 
+  rollup: {
+    cjsOpts: {
+      include: 'node_modules/**',
+    },
+    npmOpts: {
+      main: true,
+    },
+    babelOpts: {},
+  },
+
   browserSync: {
     open: false,
     notify: true,

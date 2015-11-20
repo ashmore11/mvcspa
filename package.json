@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/ashmore11/mvcspa",
   "devDependencies": {
-    "babel": "^5.8.29",
     "babel-core": "^5.8.25",
     "browser-sync": "^2.7.13",
     "connect-modrewrite": "^0.8.1",

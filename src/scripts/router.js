@@ -16,8 +16,9 @@ class AppRouter {
   routes() {
 
     return [
-      {id: 'home',    path: '/'},
-      {id: 'example', path: '/example/:id?'}
+      {id: 'home',    nav: true,  path: '/'},
+      {id: 'example', nav: true,  path: '/example'},
+      {id: 'example', nav: false, path: '/example/:id'}
     ]
 
   }

@@ -30,7 +30,7 @@ var Config = {
 };
 
 /**
- * Use the fetch API to grab the apps data from an external json file
+ * Use the fetch API to grab the data from an external json file
  */
 var Model = function Model() {
 
@@ -1173,22 +1173,16 @@ var AppRouter = (function () {
    * Return an array of routes used by the app
    */
   babelHelpers.createClass(AppRouter, [{
-    key: 'routes',
-    value: function routes() {
-
-      return [{ id: 'home', path: '/' }, { id: 'example', path: '/example/:id?' }];
-    }
+    key: 'init',
 
     /**
      * Setup routing using the page.js library
      * Info ~> https://visionmedia.github.io/page.js/
      */
-  }, {
-    key: 'init',
     value: function init() {
       var _this = this;
 
-      this.routes().map(function (route) {
+      this.routes.map(function (route) {
 
         index$1(route.path, function (ctx) {
 
@@ -1229,6 +1223,12 @@ var AppRouter = (function () {
 
       index$1.redirect('/');
     }
+  }, {
+    key: 'routes',
+    get: function get() {
+
+      return [{ id: 'home', nav: true, path: '/' }, { id: 'example', nav: true, path: '/example' }, { id: 'example', nav: false, path: '/example/:id' }];
+    }
   }]);
   return AppRouter;
 })();
@@ -1239,7 +1239,11 @@ var Header = (function () {
   function Header(data) {
     babelHelpers.classCallCheck(this, Header);
 
-    this.data = Object.assign(data, Router.routes);
+    var routes = Router.routes.filter(function (route) {
+      return route.nav === true;
+    });
+
+    this.data = Object.assign(data, { routes: routes });
 
     this.render();
   }

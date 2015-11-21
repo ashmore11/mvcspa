@@ -13,7 +13,7 @@ class AppRouter {
   /**
    * Return an array of routes used by the app
    */
-  routes() {
+  get routes() {
 
     return [
       {id: 'home',    nav: true,  path: '/'},
@@ -29,7 +29,7 @@ class AppRouter {
    */
   init() {
 
-    this.routes().map(route => {
+    this.routes.map(route => {
       
       Page(route.path, ctx => {
 

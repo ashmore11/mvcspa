@@ -4,13 +4,9 @@ export default class Header {
 
   constructor(data) {
 
-    const routes = Router.routes.map(route => {
-      route.nav = true ? route : return
-    })
+    const routes = Router.routes.filter(route => { return route.nav === true });
 
-    console.log(routes);
-
-    this.data = Object.assign(data, routes);
+    this.data = Object.assign(data, {routes});
 
     this.render();
 

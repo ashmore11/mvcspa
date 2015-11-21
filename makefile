@@ -7,3 +7,6 @@ watch:
 
 release:
 	NODE_ENV=production gulp build
+
+view:
+	node cli/index --view

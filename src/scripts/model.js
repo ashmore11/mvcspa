@@ -1,7 +1,7 @@
 import Config from './config';
 
 /**
- * Use the fetch API to grab the apps data from an external json file
+ * Use the fetch API to grab the data from an external json file
  */
 const Model = function() {
 

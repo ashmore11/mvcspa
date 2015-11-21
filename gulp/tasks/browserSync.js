@@ -1,6 +1,6 @@
 import gulp        from 'gulp';
 import browserSync from 'browser-sync';
-import config      from '../util/config';
+import config      from '../config';
 
 gulp.task('browserSync', function() {
 

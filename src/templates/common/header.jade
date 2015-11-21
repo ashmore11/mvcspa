@@ -3,6 +3,7 @@
   h2 #{title}
 
   ul
-      
-    li: a(href="/") Home
-    li: a(href="/example") Example
+    
+    each route in routes
+
+      li: a(href="#{route.path}") #{route.id}

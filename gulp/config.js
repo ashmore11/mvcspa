@@ -33,8 +33,10 @@ export default {
       include: 'node_modules/**',
     },
     npmOpts: {
+      jsnext: true,
       main: true,
     },
+    injectOpts: {},
     babelOpts: {},
   },
 

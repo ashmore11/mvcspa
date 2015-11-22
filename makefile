@@ -10,3 +10,6 @@ release:
 
 view:
 	node cli/index --view
+
+delete:
+	node cli/index --delete

@@ -36,8 +36,20 @@ export default {
       jsnext: true,
       main: true,
     },
-    injectOpts: {},
     babelOpts: {},
+  },
+
+  inject: {
+    origin: './public/index.html',
+    paths: [
+      './public/js/*.js', 
+      './public/css/*.css'
+    ],
+    options: {
+      read: false,
+      relative: true,
+    },
+    dest: './public',
   },
 
   browserSync: {

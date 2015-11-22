@@ -2,7 +2,6 @@ import gulp 		   from 'gulp';
 import rollup      from 'gulp-rollup';
 import commonjs    from 'rollup-plugin-commonjs';
 import npm         from 'rollup-plugin-npm';
-import inject      from 'rollup-plugin-inject';
 import babel       from 'rollup-plugin-babel';
 import gulpif      from 'gulp-if';
 import uglify      from 'gulp-uglify';
@@ -16,8 +15,7 @@ gulp.task('scripts', function() {
 
 		.pipe(rollup({
       plugins: [
-        inject(config.rollup.injectOpts),
-        commonjs(config.rollup.cjsOpts), 
+        commonjs(config.rollup.cjsOpts),
         npm(config.rollup.npmOpts),
         babel(config.rollup.babelOpts)
       ]

@@ -6,13 +6,13 @@ import handleError from '../util/handleError';
  
 gulp.task('templates', function(){
 
-    gulp.src('./src/templates/**/*.jade')
-      
-      .pipe(jade({client: true}))
-      
-      .on('error', handleError)
+  gulp.src(config.paths.templates.source)
+    
+    .pipe(jade(config.jade))
+    
+    .on('error', handleError)
 
-      .pipe(concat('templates.js', {templateVariable: 'Templates'}))
-      .pipe(gulp.dest(config.paths.templates.destination));
+    .pipe(concat(config.paths.templates.filename, config.concatOpts))
+    .pipe(gulp.dest(config.paths.templates.destination));
 
 });

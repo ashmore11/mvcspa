@@ -16,7 +16,7 @@ export default {
       filename: 'app.js',
     },
     templates: {
-      source: './src/**/*.jade',
+      source: './src/templates/**/*.jade',
       watch: './src/**/*.jade',
       destination: './public/js/',
       filename: 'templates.js',
@@ -37,6 +37,13 @@ export default {
       main: true,
     },
     babelOpts: {},
+  },
+
+  jade: {
+    client: true,
+    concatOpts: {
+      templateVariable: 'Templates'
+    },
   },
 
   inject: {

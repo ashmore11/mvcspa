@@ -1,13 +1,16 @@
-import modRewrite from 'connect-modrewrite';
-
 export default {
-
+  /**
+   * Environment variables
+   */
   env: {
     production: process.env.NODE_ENV === 'production',
     development: process.env.NODE_ENV === 'development',
-    base_path: process.env.PWD,
+    basepath: process.env.PWD,
   },
 
+  /**
+   * Paths for all the source files
+   */
   paths: {
     scripts: {
       source: './src/scripts/app.js',
@@ -28,6 +31,9 @@ export default {
     }
   },
 
+  /**
+   * Config for the rollup module bundler
+   */
   rollup: {
     cjsOpts: {
       include: 'node_modules/**',
@@ -39,6 +45,9 @@ export default {
     babelOpts: {},
   },
 
+  /**
+   * Config for the jade templates
+   */
   jade: {
     client: true,
     concatOpts: {
@@ -46,6 +55,9 @@ export default {
     },
   },
 
+  /**
+   * Config for injecting static files into the index.html
+   */
   inject: {
     origin: './public/index.html',
     paths: [
@@ -59,18 +71,4 @@ export default {
     dest: './public',
   },
 
-  browserSync: {
-    open: false,
-    notify: true,
-    reloadDelay: 500,
-    server: {
-      baseDir: process.env.PWD + '/public',
-      middleware: [
-        modRewrite([
-          '!\\.\\w+$ /index.html [L]'
-        ])
-      ]
-    }
-  },
-
-}
+};

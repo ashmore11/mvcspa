@@ -1,9 +1,22 @@
 import gulp        from 'gulp';
 import browserSync from 'browser-sync';
+import modRewrite  from 'connect-modrewrite';
 import config      from '../config';
 
 gulp.task('browserSync', function() {
 
-  browserSync.init(config.browserSync);
+  browserSync.init({
+    open: false,
+    notify: true,
+    reloadDelay: 500,
+    server: {
+      baseDir: './public',
+      middleware: [
+        modRewrite([
+          '!\\.\\w+$ /index.html [L]'
+        ])
+      ]
+    }
+  });
 
 });

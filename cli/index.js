@@ -4,42 +4,31 @@ var prompt  = require('co-prompt');
 var program = require('commander');
 var chalk   = require('chalk');
 var fs      = require('fs');
-
-var basepath  = process.env.PWD;
-var fileTypes = [
-  {type: 'scripts', ext: 'js'},
-  {type: 'templates', ext: 'jade'},
-  {type: 'styles', ext: 'styl'}
-];
+var config  = require('./config')
 
 program
-
   .option('-v, --view', 'Create a new view.')
   .option('-d, --delete', 'Delete an existing view.')
-
   .parse(process.argv);
 
 if(program.view) {
 
   co(function *() {
       
-    var filename = yield prompt(chalk.magenta('filename: '));
+    var filename = yield prompt(chalk.magenta('name: '));
 
-    fileTypes.map((obj, index) => {
+    config.files.map((file, index) => {
 
-      var path = `${basepath}/src/${obj.type}/views/${filename}.${obj.ext}`;
+      var path = `${file.path}/${filename}.${file.ext}`;
 
       fs.open(path, 'w', function() {
       
-        console.log(chalk.green(`${filename}.${obj.ext} created...`));
+        console.log(chalk.green(`${filename}.${file.ext} created...`));
 
-        if(index === fileTypes.length - 1) {
+        if(index === config.files.length - 1) {
 
-          var msg = 'Remember to create a route for this ' +
-                    'view in router.js and import the view ' +
-                    'into the controller.js file!'
+          console.log(chalk.yellow(config.messages.view.created));
 
-          console.log(chalk.yellow(msg));
           process.exit(0);
 
         }
@@ -56,24 +45,39 @@ if(program.delete) {
 
   co(function *() {
       
-    var filename = yield prompt(chalk.magenta('filename: '));
+    var filename = yield prompt(chalk.magenta('name: '));
 
-    fileTypes.map((obj, index) => {
+    config.files.map((file, index) => {
 
-      var path = `${basepath}/src/${obj.type}/views/${filename}.${obj.ext}`;
+      var path = `${file.path}/${filename}.${file.ext}`;
 
-      fs.unlink(path, function() {
+      fs.stat(path, function(err, stats){
+        
+        if(err) {
+        
+          if(index === config.files.length - 1) {
+
+            console.log(chalk.red(config.messages.view.fileNotFound));
+
+            process.exit(0);
+
+          }
+        
+        } else {
+
+          fs.unlink(path, function() {
       
-        console.log(chalk.red(`${filename}.${obj.ext} deleted...`));
+            console.log(chalk.green(`${filename}.${file.ext} deleted...`));
 
-        if(index === fileTypes.length - 1) {
+            if(index === config.files.length - 1) {
 
-          var msg = 'Remember to delete the route for this ' +
-                    'view in router.js and remove the view ' +
-                    'from controller.js!'
+              console.log(chalk.yellow(config.messages.view.deleted));
 
-          console.log(chalk.yellow(msg));
-          process.exit(0);
+              process.exit(0);
+
+            }
+
+          });
 
         }
 

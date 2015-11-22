@@ -12,7 +12,7 @@ gulp.task('templates', function(){
     
     .on('error', handleError)
 
-    .pipe(concat(config.paths.templates.filename, config.concatOpts))
+    .pipe(concat(config.paths.templates.filename, config.jade.concatOpts))
     .pipe(gulp.dest(config.paths.templates.destination));
 
 });

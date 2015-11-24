@@ -1,0 +1,52 @@
+{
+
+  "partials": {
+    
+    "header": {
+      "title": "Header",
+      "description": "This is a header..."
+    },
+
+    "footer": {
+      "title": "Footer",
+      "description": "This is a footer..."
+    }
+
+  },
+
+  "pages": {
+
+    "home": {
+      "title": "Home page",
+      "description": "Home page...",
+      "assets": [
+        { "type": "image", "src": "images/placeholder.png" },
+        { "type": "image", "src": "images/placeholder.png" },
+        { "type": "image", "src": "images/placeholder.png" }
+      ]
+    },
+
+    "example": {
+      "title": "Example page",
+      "description": "Example page..."
+    }
+    
+  },
+
+  "users": {
+
+    "tom-jones": {
+      "name": "Tom Jones",
+      "title": "Mr",
+      "age": "30"
+    },
+
+    "john-smith": {
+      "name": "John Smith",
+      "title": "Mr",
+      "age": "42"
+    }
+
+  }
+
+}

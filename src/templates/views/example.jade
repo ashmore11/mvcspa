@@ -1,0 +1,11 @@
+#example.page
+  
+  h1 #{page.title}
+
+  ul
+    li: a(href="/example/john-smith") John Smith
+    li: a(href="/example/tom-jones") Tom Jones
+
+  if user
+
+    include ../components/user.jade

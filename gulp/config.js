@@ -28,21 +28,36 @@ export default {
       source: './src/styles/app.styl',
       watch: 'src/styles/**/*.styl',
       destination: './public/css/',
-    }
+    },
+    public: './public',
+  },
+
+  server: {
+    port: 8080,
+    fallback: 'index.html',
   },
 
   /**
-   * Config for the rollup module bundler
+   * Config for the webpack module bundler
    */
-  rollup: {
-    cjsOpts: {
-      include: 'node_modules/**',
+  webpack: {
+    output: {
+      path: process.env.PWD + '/public',
+      filename: 'app.js',
     },
-    npmOpts: {
-      jsnext: true,
-      main: true,
+    module: {
+      loaders: [
+        { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }, 
+        { test: /\.jade$/, loader: 'jade-loader' },
+      ]
     },
-    babelOpts: {},
+    resolve: {
+      extensions: ['', '.js'],
+      alias: {
+        app: process.env.PWD + '/src/scripts',
+        templates: process.env.PWD + '/src/templates',
+      }
+    }
   },
 
   /**

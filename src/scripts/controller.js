@@ -32,13 +32,13 @@ export default class AppController {
     const template = Templates[`views/${pageId}`];
 
     const views = {
-      home: HomeView,
-      example: ExampleView,
+      home    : HomeView,
+      example : ExampleView,
     };
 
     const data = {
-      page: this.data.pages[pageId],
-      user: this.data.users[userId] || void 0,
+      page : this.data.pages[pageId],
+      user : this.data.users[userId] || void 0,
     };
 
     this.renderTemplate(template, data);

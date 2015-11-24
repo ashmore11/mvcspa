@@ -1,7 +1,6 @@
 import gulp        from 'gulp';
 import browserSync from 'browser-sync';
 import modRewrite  from 'connect-modrewrite';
-import config      from '../config';
 
 gulp.task('browserSync', function() {
 

@@ -12,7 +12,7 @@ export default class Footer {
 
     const body     = document.body;
     const div      = document.createElement('div');
-    const template = Templates['common/footer'];
+    const template = require('templates/common/footer.jade');
 
     div.innerHTML = template(this.data);
 

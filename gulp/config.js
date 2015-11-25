@@ -29,12 +29,6 @@ export default {
       watch: 'src/styles/**/*.styl',
       destination: './public/css/',
     },
-    public: './public',
-  },
-
-  server: {
-    port: 8080,
-    fallback: 'index.html',
   },
 
   /**
@@ -52,12 +46,13 @@ export default {
       ]
     },
     resolve: {
+      packageMains: ['jsnext:main', 'main'],
       extensions: ['', '.js'],
       alias: {
         app: process.env.PWD + '/src/scripts',
         templates: process.env.PWD + '/src/templates',
       }
-    }
+    },
   },
 
   /**

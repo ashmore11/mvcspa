@@ -1,5 +1,5 @@
-import Model      from './model';
-import Controller from './controller';
+import Model      from 'app/model';
+import Controller from 'app/controller';
 
 class App {
 

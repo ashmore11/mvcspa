@@ -1,4 +1,5 @@
-import Router from '../router';
+import Router from 'app/router';
+import Merge  from 'lodash/object/merge';
 
 export default class Header {
 
@@ -6,7 +7,7 @@ export default class Header {
 
     const routes = Router.routes.filter(route => { return route.nav === true });
 
-    this.data = Object.assign(data, {routes});
+    this.data = Merge(data, {routes});
 
     this.render();
 
@@ -16,7 +17,7 @@ export default class Header {
 
     const body     = document.body;
     const div      = document.createElement('div');
-    const template = Templates['common/header'];
+    const template = require('templates/common/header.jade');
 
     div.innerHTML = template(this.data);
 

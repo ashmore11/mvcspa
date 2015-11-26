@@ -13,11 +13,12 @@ class AppRouter {
   /**
    * Return an array of routes used by the app
    */
-  routes() {
+  get routes() {
 
     return [
-      {id: 'home',    path: '/'},
-      {id: 'example', path: '/example/:id?'}
+      {id: 'home',    nav: true,  path: '/'},
+      {id: 'example', nav: true,  path: '/example'},
+      {id: 'example', nav: false, path: '/example/:id'}
     ]
 
   }
@@ -28,7 +29,7 @@ class AppRouter {
    */
   init() {
 
-    this.routes().map(route => {
+    this.routes.map(route => {
       
       Page(route.path, ctx => {
 

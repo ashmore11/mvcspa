@@ -7,7 +7,7 @@ import jeet        from 'jeet';
 import handleError from '../util/handleError';
 import CSSmin      from 'gulp-minify-css';
 import browserSync from 'browser-sync';
-import config      from '../util/config';
+import config      from '../config';
 
 gulp.task('styles', function() {
   
@@ -18,11 +18,11 @@ gulp.task('styles', function() {
       use: [nib(), rupture(), jeet()],
       linenos: config.env.development,
     }))
+    
+    .on('error', handleError)
 
     .pipe(gulpif(config.env.production, CSSmin()))
     .pipe(gulp.dest(config.paths.styles.destination))
-    .pipe(gulpif(config.env.development, browserSync.stream()))
-
-    .on('error', handleError);
+    .pipe(gulpif(config.env.development, browserSync.stream()));
 
 });

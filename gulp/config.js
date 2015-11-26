@@ -1,13 +1,16 @@
-import modRewrite from 'connect-modrewrite';
-
 export default {
-
+  /**
+   * Environment variables
+   */
   env: {
     production: process.env.NODE_ENV === 'production',
     development: process.env.NODE_ENV === 'development',
-    base_path: process.env.PWD,
+    basepath: process.env.PWD,
   },
 
+  /**
+   * Paths for all the source files
+   */
   paths: {
     scripts: {
       source: './src/scripts/app.js',
@@ -16,15 +19,27 @@ export default {
       filename: 'app.js',
     },
     templates: {
+      source: './src/templates/**/*.jade',
       watch: './src/**/*.jade',
+      destination: './public/js/',
+      filename: 'templates.js',
     },
     styles: {
       source: './src/styles/app.styl',
       watch: 'src/styles/**/*.styl',
       destination: './public/css/',
-    }
+    },
+    public: './public',
   },
 
+  server: {
+    port: 8080,
+    fallback: 'index.html',
+  },
+
+  /**
+   * Config for the webpack module bundler
+   */
   webpack: {
     output: {
       path: process.env.PWD + '/public',
@@ -45,18 +60,30 @@ export default {
     }
   },
 
-  browserSync: {
-    open: false,
-    notify: true,
-    reloadDelay: 500,
-    server: {
-      baseDir: process.env.PWD + '/public',
-      middleware: [
-        modRewrite([
-          '!\\.\\w+$ /index.html [L]'
-        ])
-      ]
-    }
+  /**
+   * Config for the jade templates
+   */
+  jade: {
+    client: true,
+    concatOpts: {
+      templateVariable: 'Templates'
+    },
   },
 
-}
+  /**
+   * Config for injecting static files into the index.html
+   */
+  inject: {
+    origin: './public/index.html',
+    paths: [
+      './public/js/*.js', 
+      './public/css/*.css'
+    ],
+    options: {
+      read: false,
+      relative: true,
+    },
+    dest: './public',
+  },
+
+};

@@ -1,6 +1,8 @@
-import Router from 'app/router';
-import Header from 'app/common/header.js';
-import Footer from 'app/common/footer.js';
+import Router      from './router';
+import Header      from './common/header';
+import Footer      from './common/footer';
+import HomeView    from './views/home';
+import ExampleView from './views/example';
 
 export default class AppController {
 
@@ -27,17 +29,21 @@ export default class AppController {
    */
   render(pageId, userId) {
 
-    // Dynamically require views/templates to render pages on the fly
-    const view     = require(`app/views/${pageId}`);
-    const template = require(`templates/views/${pageId}.jade`);
-    const data     = {
-      page: this.data.pages[pageId],
-      user: this.data.users[userId] || void 0,
+    const template = Templates[`views/${pageId}`];
+
+    const views = {
+      home    : HomeView,
+      example : ExampleView,
+    };
+
+    const data = {
+      page : this.data.pages[pageId],
+      user : this.data.users[userId] || void 0,
     };
 
     this.renderTemplate(template, data);
 
-    this.renderView(view);
+    this.renderView(views[pageId]);
 
   }
 

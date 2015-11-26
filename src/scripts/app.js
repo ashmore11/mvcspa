@@ -1,12 +1,12 @@
-import Model      from 'app/model';
-import Controller from 'app/controller';
+import Model      from './model';
+import Controller from './controller';
 
 class App {
 
 	constructor() {
 
     // Fetch the data from the model before starting the app
-    Model().then(data => { this.start(data); });
+    Model().then(data => { this.init(data); });
 
   }
 
@@ -14,7 +14,7 @@ class App {
    * Execute the app
    * @param {Object} Object containing all the data required in the app
    */
-  start(data) {
+  init(data) {
 
     const controller = new Controller();
 
@@ -24,4 +24,4 @@ class App {
 
 }
 
-export default new App();
+const APP = new App();

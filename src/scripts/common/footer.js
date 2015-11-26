@@ -1,5 +1,3 @@
-import Template from 'templates/common/footer.jade';
-
 export default class Footer {
 
   constructor(data) {
@@ -12,10 +10,11 @@ export default class Footer {
 
   render() {
 
-    const body = document.body;
-    const div  = document.createElement('div');
+    const body     = document.body;
+    const div      = document.createElement('div');
+    const template = Templates['common/footer'];
 
-    div.innerHTML = Template(this.data);
+    div.innerHTML = template(this.data);
 
     body.appendChild(div.firstChild);
 
